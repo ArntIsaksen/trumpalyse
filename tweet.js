@@ -16,11 +16,13 @@ function Tweet(tweet) {
 		console.log('-- startAnalysis');
 		
 		this.rs = new RiString(tweet);
-		this.nrOfWords = this.rs.words().length;
+		this.rs.analyze();
+		/*console.log(this.rs);*/
 		
 		this.createWordObjects();
+		/*console.log(this.words);*/
+		this.calculateNrOfWords();
 		this.calculateSentimentScore();
-		
 		this.createSentences(this.findSentences(this.tweet));
 
 	}
@@ -35,14 +37,31 @@ function Tweet(tweet) {
 		return (nrOfPeriods === 3)
 	}
 	
+	this.calculateNrOfWords = function() {
+		/*console.log('-- calculateNrOfWords')*/
+		var regEX = /\'?\w+([-']\w+)*\'?/
+		var counter = 0;
+		for	(var w in this.words) {
+			if (regEX.test(this.words[w].wordString) && (typeof this.words[w].wordString !== 'undefined')) {
+				console.log('Is a word: ' + this.words[w].wordString);
+				counter++;
+			} else {
+				console.log('Not a word: ' + this.words[w].wordString);
+			}
+		}
+		console.log(this.words);
+		this.nrOfWords = counter;
+	}
+	
 	/*Calculate the sentiment score of the tweet based on the values of the words found in the AFINN-111 list*/
 	this.calculateSentimentScore = function() {
 		/*console.log('-- calculateSentimentScore');*/
 		var score = 0;
-		for (var i = 0; i < this.nrOfWords; i++) {
+		for (var i = 0; i < this.words.length; i++) {
             /*This code can't find expressions like "not funny".*/
-			var word = this.rs.words()[i].toLowerCase();
-			if (word === 'not' && i < this.nrOfWords) {
+			var word = this.words[i].wordString.toLowerCase();
+			/*console.log('word: ' + word);*/
+			if (word === 'not' && i < this.words.length) {
 				/*console.log('-- ** Found Not')*/
 				/*console.log('-- ** next word is: ' + this.rs.words()[i + 1].toLowerCase());*/
 			}
@@ -52,12 +71,12 @@ function Tweet(tweet) {
 			};
 		}
 		this.sentimentScore = score;
-		/*console.log('-- ** sentimentScore: ' + this.sentimentScore);*/
 	}
 
 	this.createWordObjects = function() {
 		/*console.log('-- createWordObjects');*/
-		for (var i = 0; i < this.nrOfWords; i++) {
+		console.log(this.rs.words().length);
+		for (var i = 0; i < this.rs.words().length; i++) {
 			this.words[i] = new Word(this.rs.words()[i], this.rs.pos()[i]);
 		}
 	}
@@ -75,15 +94,13 @@ function Tweet(tweet) {
 	
 	this.createSentences = function(arr) {
 		console.log('-- createSentences');
+		var regEX = new RegExp('[^.|,|?|!]');
 		for (var s in arr) {
-			/*console.log('-- ** s: ' + s);*/
-			/*console.log('-- ** sentence: ' + arr.hasOwnProperty(s));*/
-			this.sentences.push(new Sentence(arr[s]));
-			console.log('-- ** >> sentence added');
+			if (arr.hasOwnProperty(s) && regEX.test(arr[s])) {
+				this.sentences.push(new Sentence(arr[s]));
+			}
 		}
-		/*console.log(arr[arr.length]);*/
 	}
-	
 	/*Start the tweet analysis*/
 	this.startAnalysis();
 }

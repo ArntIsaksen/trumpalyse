@@ -22,7 +22,7 @@ function setup() {
 		/*console.log('       Tweet: ' + testTweetList[t]);*/
 		var newTweet = new Tweet(testTweetList[t]);
 		tweets.push(newTweet);
-		console.log('---------------- Next Tweet ------------------')
+		console.log('--------- Next Tweet ---------')
 	}
 	addTweetsToSite();
 }
