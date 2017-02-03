@@ -1,0 +1,157 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+        <!-- Libraries -->
+		<script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+		<script language="javascript" type="text/javascript" src="libraries/p5.dom.js"></script>
+		<script language="javascript" type="text/javascript" src="libraries/rita-full.js"></script>
+        <!-- Javascript -->
+        <script language="javascript" type="text/javascript"  src="trumpalyse.js"></script>
+        <script language="javascript" type="text/javascript"  src="sentence.js"></script>
+        <script language="javascript" type="text/javascript"  src="tweet.js"></script>
+        <script language="javascript" type="text/javascript"  src="word.js"></script>
+        <!-- CSS -->
+        <link rel="stylesheet" href="css/foundation.css">
+        <link rel="stylesheet" href="css/app.css">
+        <!--<link rel="stylesheet" href="css/main.css"> -->
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div id="top-row" class="row">
+            <div class="small-12 columns">
+                <h1>Trumpalyse</h1>
+                <h3>A lighthearted look at the tweets of President Trump</h3>
+            </div>
+        </div>
+        <div class="row" style="background:#ededed;">
+            <div class="medium-12 columns">
+                <div class="medium-3 columns">
+                    <h5>Nr. of tweets</h5>
+                    <h4>1000</h4>
+                </div>
+                <div class="medium-3 columns">
+                    <h5>Newest tweet</h5>
+                    <h4>03:24 17. feb 2017</h4>
+                </div>
+                <div class="medium-3 columns">
+                    <h5>Avg. nr. of words</h5>
+                    <h4>12</h4>
+                </div>
+                <div class="medium-3 columns">
+                    <h5>Avg. nr. of words</h5>
+                    <h4>12</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="background:#fafafa;">
+            <div class="medium-12 columns">
+                <div class="small-4 medium-6 columns">
+                    <h5>Nr. of words per tweet</h5>
+                    <h4>12.3</h4>
+                </div>
+                <div class="small-8 medium-6 columns">
+                    <h5>Most used words</h5>
+                    <ul>
+                        <li>Nn:</li>
+                        <li>vb:</li>
+                        <li>jj:</li>
+                        <li>dd:</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="tweet-row" class="row">
+            
+            <!--<article class="column">
+                <h3 class="columns">
+                    <i>"much worse - just look at Syria (red line), Crimea, Ukraine and the build-up of Russian nukes. Not good! Was this the leaker of Fake News..."</i>
+                </h3>
+                <div class="medium-12 columns">
+                    <div id="word-count" class="small-6 medium-3 columns">
+                        <h5>Word count</h5>
+                        <h4>26</h4>
+                    </div>
+                    <div id="sentences" class="small-6 medium-3 columns">
+                        <h5>Sentences</h5>
+                        <h4>3</h4>
+                    </div>
+                    <div id="sentiment-words" class="small-6 medium-3 columns">
+                        <h5>Sentiment words</h5>
+                        <ul>
+                            <li>worse</li>
+                            <li>not</li>
+                            <li>good</li>
+                            <li>fake</li>
+                        </ul>
+                    </div>
+                    <div id="sentiment-score" class="small-6 medium-3 columns">
+                        <h5>Sentiment score</h5>
+                        <h4>-3</h4>
+                    </div>
+                </div>
+
+            </article>-->
+
+            <!--<article>
+				<blockquote class="columns">
+					<p>
+						.@NBCNews is bad but Saturday Night Live is the worst of NBC. Not funny, cast is terrible, always a complete hit job. Really bad television!
+					</p>
+					<footer>
+						<cite>
+						<a href="http://www.brucelawson.co.uk/2013/on-citing-quotations-again/">Donald Trump</a>
+						</cite>
+					</footer>
+				</blockquote>
+                
+                <div class="medium-6 columns">
+                    <div class="small-6 columns">
+                        <h5>Word count</h5>
+                        <h4>26</h4>
+                    </div>
+                    <div class="small-6 columns">
+                        <h5>asd</h5>
+                        <h4>12</h4>
+                    </div>
+                </div>
+                <div class="medium-6 columns">
+                    <div class="medium-6 columns">
+                        <h5>Sentiment words</h5>
+                        <ul>
+                            <li>worse</li>
+                            <li>not</li>
+                            <li>good</li>
+                            <li>fake</li>
+                        </ul>
+                    </div>
+                    <div class="medium-6 columns">
+                        <h5>Sentiment score</h5>
+                        <h4>-3</h4>
+                    </div>
+                </div>
+            </article>-->
+        
+		</div>
+
+        <!-- <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.4.min.js"><\/script>')</script> -->
+
+        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+        <script>
+            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+            ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    </body>
+</html>

@@ -1,0 +1,217 @@
+/*Typography*/
+$font-stack: Merriweather, serif
+$font-base-size: 1em
+
+/*Colour*/
+$background-color: #ffffff
+
+$primary-color-dark:            #AE9E8B
+$primary-color:                 #2E2F30
+$primary-color-light:           #DCDCDD
+
+$primary-text-color-light:      #FFFFFF
+$primary-text-color-dark:       #212121
+$secondary-text-color:          #757575
+
+$accent-color:                  #FFC107
+$divider-color:                 #BDBDBD
+
+/*Space*/
+$padding: 0.5em
+
+body, h1, h2, h3, h4, h5, h6
+    font-family: $font-stack
+    color: $primary-text-color-dark
+    
+h1
+    margin-top: $padding
+    font-size: $font-base-size * 4
+    font-weight: 700
+
+h2
+    font-size: $font-base-size * 3
+    
+h3
+    font-size: $font-base-size * 2
+    
+h4
+    font-size: $font-base-size * 1.5
+
+a
+    color: $primary-color
+
+a:hover
+    color: $primary-color-dark
+
+.button
+    color: $primary-text-color-light
+    background-color: $primary-color-light
+
+.button h4
+    color: $primary-text-color-dark
+
+.button p
+    color: $primary-text-color-dark
+
+.button:hover, .button:focus
+    background-color: $primary-color-dark
+    color: $primary-text-color-dark
+
+.button:hover h4
+    color: $primary-text-color-light
+
+.button:hover h5
+    color: $primary-text-color-light
+
+.button.primary
+    background-color: $primary-color
+    color: $background-color
+
+.button.primary:hover, .button.primary:focus
+    background-color: $primary-color-light
+    color: $background-color
+
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+30,cfd8dc+100,cfd8dc+101 */
+
+#blogg-button
+    color: $primary-color
+
+#introduction-text
+    margin-top: $padding * 5
+
+#small-screen-intro
+    background: $background-color
+    
+#intro-text
+    top: 50%
+    
+
+.img_icon
+    width: 5em
+    margin: 1em
+
+.no-background
+    background-color: $background-color
+    
+section
+    margin: 3.5em 0
+
+section:first-of-type
+    margin: 0
+
+.title-bar
+    background-color: $primary-color-dark
+
+.top-bar, .top-bar ul
+    background-color: $background-color
+    
+#face-img
+    overflow: hidden
+
+#face-img > img
+    /*max-width: 100%
+    width: 100%
+    -webkit-transform: scale(1.1)
+    -moz-transform: scale(1.1)
+    -o-transform: scale(1.1)
+    -ms-transform: scale(1.1)
+    transform: scale(1.1)
+
+    -webkit-transform: translateX(-5%)
+    -moz-transform: translateX(-5%)
+    -o-transform: translateX(-5%)
+    -ms-transform: translateX(-5%)
+    transform: translateX(-5%)
+
+/*.center-align
+    position: relative
+    top: 50%
+    transform: translateY(50%)
+    border: 1px solid black*/
+
+.button-group
+    margin-bottom: 0
+
+.add-divider
+    border-left: 1px solid $primary-color-light
+
+a h5
+    margin-bottom: 0
+
+#companies
+    margin-top: 0
+    background: $primary-color-light
+
+.card
+    border-radius: 2px
+    margin: 2em 0
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1)
+
+
+.card:hover
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
+
+.card > a > h3
+    background-color: $primary-color-dark
+    padding: $padding
+    color: $primary-text-color-light
+
+footer
+    background: $primary-color-light
+    margin-top: $padding * 10
+    padding: 2rem 0 0 0
+
+/*  MORPH
+    from: http://designshack.net/articles/css/joshuajohnson-2/ */
+.morph
+    -webkit-transition: all 0.5s ease
+    -moz-transition: all 0.5s ease
+    -o-transition: all 0.5s ease
+    -ms-transition: all 0.5s ease
+    transition: all 0.5s ease
+ 
+.morph:hover
+    border-radius: 12%
+    -webkit-transform: scale(1.10, 1.10)
+    -moz-transform: scale(1.10, 1.10)
+    -o-transform: scale(1.10, 1.10)
+    -ms-transform: scale(1.10, 1.10)
+    transform: scale(1.10, 1.10)
+
+blockquote a:hover
+    text-decoration: underline
+
+/*Portfolio*/
+
+article h1
+    padding-top: $padding * 2
+    padding-bottom: $padding
+    font-size: 3.5em
+
+article h2
+    padding-top: $padding
+    padding-bottom: $padding
+
+article h3
+    padding-top: $padding * 2
+    padding-bottom: $padding
+
+.inline-img
+    padding-top: $padding * 5
+    padding-bottom: $padding * 5
+
+.inline-img-medium
+    width: 50%
+    display: block
+    margin: 0 auto
+
+.portfolio-header
+    background: $primary-color
+
+.portfolio-header > img
+    opacity: 0.8
+
+video
+    margin-top: $padding * 4
+    margin-bottom: $padding * 4
