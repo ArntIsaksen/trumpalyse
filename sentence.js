@@ -22,8 +22,4 @@ function Sentence(input) {
 	}
 	
 	this.startAnalysis();
-	
-	/*console.log('-- ** ## New sentence created: ')*/
-	/*console.log(this.words.length);*/
-	/*console.log(this.words);*/
 }

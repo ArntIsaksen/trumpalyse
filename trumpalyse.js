@@ -18,11 +18,9 @@ function preload() {
 function setup() {
 	noCanvas();
 	for (var t in testTweetList) {
-		/*console.log('Adding tweet: ' + t);*/
-		/*console.log('       Tweet: ' + testTweetList[t]);*/
 		var newTweet = new Tweet(testTweetList[t]);
 		tweets.push(newTweet);
-		console.log('--------- Next Tweet ---------')
+		/*console.log('--------- Next Tweet ---------')*/
 	}
 	addTweetsToSite();
 }
@@ -71,7 +69,8 @@ function addTweetsToSite() {
 
 		article.child(blockquote);
 		article.child(divContainer);
-
+		
+		/* Add tweet to index.html */
 		article.parent('tweet-row');
 	}
 }

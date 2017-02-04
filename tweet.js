@@ -17,10 +17,8 @@ function Tweet(tweet) {
 		
 		this.rs = new RiString(tweet);
 		this.rs.analyze();
-		/*console.log(this.rs);*/
 		
 		this.createWordObjects();
-		/*console.log(this.words);*/
 		this.calculateNrOfWords();
 		this.calculateSentimentScore();
 		this.createSentences(this.findSentences(this.tweet));
@@ -43,13 +41,9 @@ function Tweet(tweet) {
 		var counter = 0;
 		for	(var w in this.words) {
 			if (regEX.test(this.words[w].wordString) && (typeof this.words[w].wordString !== 'undefined')) {
-				console.log('Is a word: ' + this.words[w].wordString);
 				counter++;
-			} else {
-				console.log('Not a word: ' + this.words[w].wordString);
 			}
 		}
-		console.log(this.words);
 		this.nrOfWords = counter;
 	}
 	
@@ -60,7 +54,6 @@ function Tweet(tweet) {
 		for (var i = 0; i < this.words.length; i++) {
             /*This code can't find expressions like "not funny".*/
 			var word = this.words[i].wordString.toLowerCase();
-			/*console.log('word: ' + word);*/
 			if (word === 'not' && i < this.words.length) {
 				/*console.log('-- ** Found Not')*/
 				/*console.log('-- ** next word is: ' + this.rs.words()[i + 1].toLowerCase());*/
@@ -75,7 +68,6 @@ function Tweet(tweet) {
 
 	this.createWordObjects = function() {
 		/*console.log('-- createWordObjects');*/
-		console.log(this.rs.words().length);
 		for (var i = 0; i < this.rs.words().length; i++) {
 			this.words[i] = new Word(this.rs.words()[i], this.rs.pos()[i]);
 		}
@@ -93,7 +85,7 @@ function Tweet(tweet) {
 	}
 	
 	this.createSentences = function(arr) {
-		console.log('-- createSentences');
+		/*console.log('-- createSentences');*/
 		var regEX = new RegExp('[^.|,|?|!]');
 		for (var s in arr) {
 			if (arr.hasOwnProperty(s) && regEX.test(arr[s])) {
