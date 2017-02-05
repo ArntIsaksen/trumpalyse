@@ -52,16 +52,24 @@ function Tweet(tweet) {
 		/*console.log('-- calculateSentimentScore');*/
 		var score = 0;
 		for (var i = 0; i < this.words.length; i++) {
-            /*This code can't find expressions like "not funny".*/
 			var word = this.words[i].wordString.toLowerCase();
 			if (word === 'not' && i < this.words.length) {
-				/*console.log('-- ** Found Not')*/
-				/*console.log('-- ** next word is: ' + this.rs.words()[i + 1].toLowerCase());*/
-			}
-			if (afinn.hasOwnProperty(word)) {
+				var nextWord = this.words[i + 1].wordString.toLowerCase();
+				var compundExpression = word + ' ' + nextWord;
+				/*This code finds expressions like "not funny" and flips the value of the next word if it's not in AFINN-111.*/
+				if (afinn.hasOwnProperty(compundExpression)) {
+					this.sentimentWords.push(compundExpression);
+					score += Number(afinn[compundExpression]);
+					i++;
+				} else if (afinn.hasOwnProperty(nextWord)) {
+					this.sentimentWords.push(compundExpression);
+					score += (-1 * Number(afinn[nextWord]));
+					i++;
+				}
+			} else if (afinn.hasOwnProperty(word)) {
 				this.sentimentWords.push(word);
 				score += Number(afinn[word]);
-			};
+			}
 		}
 		this.sentimentScore = score;
 	}
