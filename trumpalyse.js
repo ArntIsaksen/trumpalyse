@@ -25,9 +25,11 @@ function setup() {
 	addTweetsToSite();
 }
 
+
+
 function addTweetsToSite() {
 	for (var i = 0; i < tweets.length; i++) {
-		/* Create elements */
+		/* Create elements, add id and class */
 		var tweetText = createElement('p', tweets[i].tweet);
 		var blockquote = createElement('blockquote', '').class('columns');
 		var cite = createElement('cite', '');

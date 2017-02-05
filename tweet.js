@@ -27,7 +27,7 @@ function Tweet(tweet) {
 	/*Check to see if the three last characters are periods.*/
 	this.isPartOfTwitterStorm = function() {
 		var nrOfPeriods = 0;
-		for (var i = this.nrOfWords - 1; i >= this.nrOfWords - 3; i--) {
+		for (var i = this.rs.words().length - 1; i >= this.rs.words().length - 3; i--) {
 			if (this.rs.words()[i] === '.') {
 				nrOfPeriods++;
 			};
