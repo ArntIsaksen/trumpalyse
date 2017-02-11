@@ -13,7 +13,7 @@ function Tweet(tweet) {
 	this.sentimentScore;
 
 	this.startAnalysis = function() {
-		console.log('-- startAnalysis');
+		/*console.log('-- startAnalysis');*/
 		
 		this.rs = new RiString(tweet);
 		this.rs.analyze();

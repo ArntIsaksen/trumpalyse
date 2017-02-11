@@ -23,9 +23,62 @@ function setup() {
 		/*console.log('--------- Next Tweet ---------')*/
 	}
 	addTweetsToSite();
+	addStatisticsToSite();
+	console.log(findWordFrequency());
 }
 
+function findWordFrequency() {
+	var wordFrequency = [];
+	for (var i = 0; i < tweets.length; i++) {
+		for (var j = 0; j < tweets[i].words.length; j++) {
+			var w = tweets[i].words[j].wordString.toLowerCase();
+			if (wordFrequency[w]) {
+				wordFrequency[w]++;
+			} else {
+				wordFrequency[w] = 1;
+			}
+		}
+	}
+	return wordFrequency;
+}
 
+function avgNrOfSentences() {
+	var nrOfSentences = 0;
+	for (var i = 0; i < tweets.length; i++) {
+		nrOfSentences += tweets[i].sentences.length;
+	}
+	return nrOfSentences/tweets.length;
+}
+
+function avgNrOfWords() {
+	var nrWords = 0;
+	for (var i = 0; i < tweets.length; i++) {
+		nrWords += tweets[i].nrOfWords;
+	}
+	return nrWords/tweets.length;
+}
+
+function avgNrOfWordsPerSentence() {
+	var nrWords = 0;
+	var nrOfSentences = 0;
+	for (var i = 0; i < tweets.length; i++) {
+		nrWords += tweets[i].nrOfWords;
+		nrOfSentences += tweets[i].sentences.length;
+	}
+	return nrWords/nrOfSentences;
+}
+
+function addStatisticsToSite() {
+	var not = createElement('h4', tweets.length);
+	var anow = createElement('h4', avgNrOfWords().toFixed(2));
+	var anos = createElement('h4', avgNrOfSentences().toFixed(2));
+	var anowps = createElement('h4', avgNrOfWordsPerSentence().toFixed(2));
+	
+	not.parent('nrOfTweets');
+	anow.parent('avgNrOfWords');
+	anos.parent('avgNrOfSentences');
+	anowps.parent('avgNrOfWordsPerSentence');
+}
 
 function addTweetsToSite() {
 	for (var i = 0; i < tweets.length; i++) {
@@ -45,7 +98,7 @@ function addTweetsToSite() {
 
 		/* Nest elements */
 		wordCount.child(createElement('h5', 'Word count'));
-		wordCount.child(createElement('h4', tweets[1].nrOfWords));
+		wordCount.child(createElement('h4', tweets[i].nrOfWords));
 
 		sents.child(createElement('h5', 'Sentences'));
 		sents.child(createElement('h4', tweets[i].sentences.length));
