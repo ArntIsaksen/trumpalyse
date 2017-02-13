@@ -32,7 +32,7 @@ function findWordFrequency() {
 	for (var i = 0; i < tweets.length; i++) {
 		for (var j = 0; j < tweets[i].words.length; j++) {
 			var w = tweets[i].words[j].wordString.toLowerCase();
-			if (wordFrequency[w]) {
+			if (wordFrequency.hasOwnProperty(w)) {
 				wordFrequency[w]++;
 			} else {
 				wordFrequency[w] = 1;
