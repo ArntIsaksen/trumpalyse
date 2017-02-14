@@ -1,0 +1,24 @@
+{
+  "name": "trumpalyse",
+  "version": "0.0.1",
+  "description": "A lighthearted look at the tweets of President Trump",
+  "main": "trumpalyse.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArntIsaksen/trumpalyse.git"
+  },
+  "keywords": [
+    "twitter",
+    "analysis",
+    "trump"
+  ],
+  "author": "Arnt Isaksen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArntIsaksen/trumpalyse/issues"
+  },
+  "homepage": "https://github.com/ArntIsaksen/trumpalyse#readme"
+}
