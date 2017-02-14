@@ -17,6 +17,7 @@ function preload() {
 
 function setup() {
 	noCanvas();
+    var firebase = new firebaseConnection();
 	for (var t in testTweetList) {
 		var newTweet = new Tweet(testTweetList[t]);
 		tweets.push(newTweet);
