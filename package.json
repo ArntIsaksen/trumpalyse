@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/ArntIsaksen/trumpalyse/issues"
   },
-  "homepage": "https://github.com/ArntIsaksen/trumpalyse#readme"
+  "homepage": "https://github.com/ArntIsaksen/trumpalyse#readme",
+  "devDependencies": {
+    "firebase-cli": "^1.2.0"
+  }
 }
