@@ -9,14 +9,16 @@
 var tweets = [];
 var afinn;
 var testTweetList;
+var firebase;
 
 function preload() {
-	afinn = loadJSON('afinn-111.json');
-	testTweetList = loadJSON('ex-tweets.json');
+	afinn = loadJSON('data/afinn-111.json');
+	testTweetList = loadJSON('data/ex-tweets.json');
 }
 
 function setup() {
 	noCanvas();
+    firebase = new firebaseConnection();
 	for (var t in testTweetList) {
 		var newTweet = new Tweet(testTweetList[t]);
 		tweets.push(newTweet);
