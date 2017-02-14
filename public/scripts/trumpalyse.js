@@ -11,8 +11,8 @@ var afinn;
 var testTweetList;
 
 function preload() {
-	afinn = loadJSON('afinn-111.json');
-	testTweetList = loadJSON('ex-tweets.json');
+	afinn = loadJSON('data/afinn-111.json');
+	testTweetList = loadJSON('data/ex-tweets.json');
 }
 
 function setup() {
