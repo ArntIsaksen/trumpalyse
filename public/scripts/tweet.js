@@ -26,6 +26,7 @@ function Tweet(tweet) {
 
 	}
 	/*Check to see if the three last characters are periods.*/
+	/*<iframe src="//giphy.com/embed/l3vR8R8D6if4ePysE" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/ubykotexbrand-facepalm-smh-l3vR8R8D6if4ePysE">via GIPHY</a></p> */
 	this.isPartOfTwitterStorm = function() {
 		var nrOfPeriods = 0;
 		for (var i = this.rs.words().length - 1; i >= this.rs.words().length - 3; i--) {

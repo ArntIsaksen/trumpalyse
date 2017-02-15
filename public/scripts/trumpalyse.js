@@ -75,12 +75,12 @@ function avgNrOfWordsPerSentence() {
 }
 
 function addStatisticsToSite() {
-	var not = createElement('h4', tweets.length);
+	var not = createElement('h3', 'A lighthearted look at the ' + tweets.length + ' tweets of President Trump');
 	var anow = createElement('h4', avgNrOfWords().toFixed(2));
 	var anos = createElement('h4', avgNrOfSentences().toFixed(2));
 	var anowps = createElement('h4', avgNrOfWordsPerSentence().toFixed(2));
 	
-	not.parent('nrOfTweets');
+	not.parent('intro');
 	anow.parent('avgNrOfWords');
 	anos.parent('avgNrOfSentences');
 	anowps.parent('avgNrOfWordsPerSentence');
