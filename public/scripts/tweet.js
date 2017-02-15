@@ -55,29 +55,21 @@ function Tweet(tweet) {
 		for (var i = 0; i < this.words.length; i++) {
 			var originalCaseWord = this.words[i].wordString;
 			var word = this.words[i].wordString.toLowerCase();
-			/*console.log('word: "' + word + '" index ' + i);*/
 			if (word === 'not' && i < this.words.length) {
 				var nextWord = this.words[i + 1].wordString.toLowerCase();
 				var compundExpression = word + ' ' + nextWord;
-				/*console.log('Compund expression: "' + compundExpression + '"');*/
 				/*This code finds expressions like "not funny" and flips the value of the next word if it's not in AFINN-111.*/
 				if (afinn.hasOwnProperty(compundExpression)) {
 					this.sentimentWords.push(originalCaseWord + ' ' + nextWord);
-					/*console.log(' -- Push CE ' + compundExpression + ' index ' + i);*/
 					score += Number(afinn[compundExpression]);
 					i++;
-					/*console.log(' -- Index is now ' + i);*/
 				} else if (afinn.hasOwnProperty(nextWord)) {
 					this.sentimentWords.push(originalCaseWord + ' ' + nextWord);
-					/*console.log(' -- Push CE ' + compundExpression + ' index ' + i);*/
 					score += (-1 * Number(afinn[nextWord]));
-					/*console.log(' -- Flip value');*/
 					i++;
-					/*console.log(' -- Index is now ' + i);*/
 				}
 			} else if (afinn.hasOwnProperty(word)) {
 				this.sentimentWords.push(originalCaseWord);
-				/*console.log(' -- Push word "' + word + '" index ' + i);*/
 				score += Number(afinn[word]);
 			}
 		}
