@@ -19,6 +19,11 @@ function preload() {
 function setup() {
 	noCanvas();
     firebase = new firebaseConnection();
+	/*for (var t in testTweetList) {
+		var newTweet = new Tweet(testTweetList[t]);
+		tweets.push(newTweet);
+		console.log('--------- Next Tweet ---------')
+	}*/
 	for (var t in testTweetList) {
 		var newTweet = new Tweet(testTweetList[t]);
 		tweets.push(newTweet);
@@ -26,7 +31,6 @@ function setup() {
 	}
 	addTweetsToSite();
 	addStatisticsToSite();
-	console.log(findWordFrequency());
 }
 
 function findWordFrequency() {
@@ -106,9 +110,9 @@ function addTweetsToSite() {
 		sents.child(createElement('h4', tweets[i].sentences.length));
 
 		sentWords.child(createElement('h5', 'Sentiment words'));
-		for (var sWord in tweets[1].sentimentWords) {
-			if (tweets[1].sentimentWords.hasOwnProperty(sWord))
-				sentWords.child(createElement('h4', tweets[i].sentimentWords[sWord]));
+		for (var sWord in tweets[i].sentimentWords) {
+			if (tweets[i].sentimentWords.hasOwnProperty(sWord))
+				sentWords.child(createElement('h4', tweets[i].sentimentWords[sWord].toLowerCase()));
 		}
 
 		sentScore.child(createElement('h5', 'Sentiment score'));

@@ -22,6 +22,7 @@ function Tweet(tweet) {
 		this.calculateNrOfWords();
 		this.calculateSentimentScore();
 		this.createSentences(this.findSentences(this.tweet));
+		this.colourSentimentWords();
 
 	}
 	/*Check to see if the three last characters are periods.*/
@@ -52,26 +53,55 @@ function Tweet(tweet) {
 		/*console.log('-- calculateSentimentScore');*/
 		var score = 0;
 		for (var i = 0; i < this.words.length; i++) {
+			var originalCaseWord = this.words[i].wordString;
 			var word = this.words[i].wordString.toLowerCase();
+			/*console.log('word: "' + word + '" index ' + i);*/
 			if (word === 'not' && i < this.words.length) {
 				var nextWord = this.words[i + 1].wordString.toLowerCase();
 				var compundExpression = word + ' ' + nextWord;
+				/*console.log('Compund expression: "' + compundExpression + '"');*/
 				/*This code finds expressions like "not funny" and flips the value of the next word if it's not in AFINN-111.*/
 				if (afinn.hasOwnProperty(compundExpression)) {
-					this.sentimentWords.push(compundExpression);
+					this.sentimentWords.push(originalCaseWord + ' ' + nextWord);
+					/*console.log(' -- Push CE ' + compundExpression + ' index ' + i);*/
 					score += Number(afinn[compundExpression]);
 					i++;
+					/*console.log(' -- Index is now ' + i);*/
 				} else if (afinn.hasOwnProperty(nextWord)) {
-					this.sentimentWords.push(compundExpression);
+					this.sentimentWords.push(originalCaseWord + ' ' + nextWord);
+					/*console.log(' -- Push CE ' + compundExpression + ' index ' + i);*/
 					score += (-1 * Number(afinn[nextWord]));
+					/*console.log(' -- Flip value');*/
 					i++;
+					/*console.log(' -- Index is now ' + i);*/
 				}
 			} else if (afinn.hasOwnProperty(word)) {
-				this.sentimentWords.push(word);
+				this.sentimentWords.push(originalCaseWord);
+				/*console.log(' -- Push word "' + word + '" index ' + i);*/
 				score += Number(afinn[word]);
 			}
 		}
 		this.sentimentScore = score;
+	}
+	
+	this.colourSentimentWords = function() {
+		var searchIndex = 0;
+		var spanAddedTweet = '';
+		var searchString = this.tweet;
+		for (var j = 0; j < this.sentimentWords.length; j++) {
+			var w = this.sentimentWords[j].toLowerCase();
+			var wOriginalCase = this.sentimentWords[j];
+			var regEX = new RegExp("(\\b)" + w + "(\\b)", 'i');
+			var foundWordIndex = searchString.search(regEX);
+			var leftPart = searchString.slice(0, foundWordIndex);
+			spanAddedTweet += (leftPart + '<span id=sentimentWord>' + wOriginalCase + '</span>');
+			searchIndex = (foundWordIndex + w.length);
+			searchString = searchString.slice(searchIndex)
+			if (this.sentimentWords.length - 1 === j) {
+				spanAddedTweet += searchString;
+			}
+		}
+		this.tweet = spanAddedTweet;
 	}
 
 	this.createWordObjects = function() {
@@ -84,8 +114,8 @@ function Tweet(tweet) {
 	/*Created by the one and only Martin Sjåstad*/
 	this.findSentences = function(s) {
 		/*console.log('-- findSentences');*/
-		var rEx = /[^.!?]*[.!?]+/g;
-		var arr = s.match(rEx);
+		var regEX = /[^.!?]*[.!?]+/g;
+		var arr = s.match(regEX);
 		var trimmed = arr.map(function(item) {
 			return item.trim();
 		});

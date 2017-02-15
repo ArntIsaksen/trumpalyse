@@ -50,3 +50,7 @@ a:hover {
 blockquote > p {
 	font-size: 2em;
 }
+
+#sentimentWord {
+	color: red;
+}
