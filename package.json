@@ -4,7 +4,8 @@
   "description": "A lighthearted look at the tweets of President Trump",
   "main": "trumpalyse.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "firebase deploy"
   },
   "repository": {
     "type": "git",
