@@ -101,6 +101,8 @@ function addTweetsToSite() {
 		var wordCount = createDiv('').id('word-count').class('small-6 medium-3 columns');
 		var sents = createDiv('').id('sentences').class('small-6 medium-3 columns');
 		var article = createElement('article').class('columns');
+		
+		var tmp = createDiv('').class('small-6 medium-3 columns')
 
 		/* Nest elements */
 		wordCount.child(createElement('h5', 'Word count'));
@@ -109,19 +111,20 @@ function addTweetsToSite() {
 		sents.child(createElement('h5', 'Sentences'));
 		sents.child(createElement('h4', tweets[i].sentences.length));
 
-		sentWords.child(createElement('h5', 'Sentiment words'));
+		/*sentWords.child(createElement('h5', 'Sentiment words'));
 		for (var sWord in tweets[i].sentimentWords) {
 			if (tweets[i].sentimentWords.hasOwnProperty(sWord))
 				sentWords.child(createElement('h4', tweets[i].sentimentWords[sWord].toLowerCase()));
-		}
+		}*/
 
 		sentScore.child(createElement('h5', 'Sentiment score'));
 		sentScore.child(createElement('h4', tweets[i].sentimentScore));
 
 		divContainer.child(sents);
 		divContainer.child(wordCount);
-		divContainer.child(sentWords);
+		/*divContainer.child(sentWords);*/
 		divContainer.child(sentScore);
+		divContainer.child(tmp);
 
 		cite.child(link);
 		quoteFooter.child(cite);
