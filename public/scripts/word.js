@@ -1,4 +1,12 @@
-function Word(wordString, partOfSpeech) {
+function Word(wordString, pos) {
 	this.wordString = wordString;
-	this.partOfSpeech = partOfSpeech;
+	this.pos = pos;
+	
+	this.lowerCaseWord = wordString.toLowerCase();
+	this.partOfSpeech;
+	this.sentimentValue;
+	
+	this.setSentimentValue = function(sentimentValue) {
+		this.setSentimentValue = sentimentValue;
+	}
 }

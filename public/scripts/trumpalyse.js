@@ -19,16 +19,12 @@ function preload() {
 function setup() {
 	noCanvas();
     firebase = new firebaseConnection();
-	/*for (var t in testTweetList) {
-		var newTweet = new Tweet(testTweetList[t]);
-		tweets.push(newTweet);
-		console.log('--------- Next Tweet ---------')
-	}*/
+
 	for (var t in testTweetList) {
 		var newTweet = new Tweet(testTweetList[t]);
 		tweets.push(newTweet);
-		/*console.log('--------- Next Tweet ---------')*/
 	}
+	
 	addTweetsToSite();
 	addStatisticsToSite();
 }
@@ -102,7 +98,7 @@ function addTweetsToSite() {
 		var sents = createDiv('').id('sentences').class('small-6 medium-3 columns');
 		var article = createElement('article').class('columns');
 		
-		var tmp = createDiv('').class('small-6 medium-3 columns')
+		var tmp = createDiv('').class('small-6 medium-3 columns');
 
 		/* Nest elements */
 		wordCount.child(createElement('h5', 'Word count'));
@@ -110,12 +106,6 @@ function addTweetsToSite() {
 
 		sents.child(createElement('h5', 'Sentences'));
 		sents.child(createElement('h4', tweets[i].sentences.length));
-
-		/*sentWords.child(createElement('h5', 'Sentiment words'));
-		for (var sWord in tweets[i].sentimentWords) {
-			if (tweets[i].sentimentWords.hasOwnProperty(sWord))
-				sentWords.child(createElement('h4', tweets[i].sentimentWords[sWord].toLowerCase()));
-		}*/
 
 		sentScore.child(createElement('h5', 'Sentiment score'));
 		sentScore.child(createElement('h4', tweets[i].sentimentScore));
