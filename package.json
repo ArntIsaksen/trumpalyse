@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/ArntIsaksen/trumpalyse#readme",
   "devDependencies": {
-    "firebase-cli": "^1.2.0"
+    "firebase-tools": "^3.3.0"
   }
 }
