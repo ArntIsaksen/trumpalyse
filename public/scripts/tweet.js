@@ -13,7 +13,6 @@ function Tweet(tweet) {
 	this.sentimentScore;
 
 	this.startAnalysis = function() {
-		/*console.log('-- startAnalysis');*/
 		
 		this.rs = new RiString(tweet);
 		this.rs.analyze();
@@ -38,7 +37,6 @@ function Tweet(tweet) {
 	}
 	
 	this.calculateNrOfWords = function() {
-		/*console.log('-- calculateNrOfWords')*/
 		var regEX = /\'?\w+([-']\w+)*\'?/
 		var counter = 0;
 		for	(var w in this.words) {
@@ -51,7 +49,6 @@ function Tweet(tweet) {
 	
 	/*Calculate the sentiment score of the tweet based on the values of the words found in the AFINN-111 list*/
 	this.calculateSentimentScore = function() {
-		/*console.log('-- calculateSentimentScore');*/
 		var score = 0;
 		for (var i = 0; i < this.words.length; i++) {
 			var originalCaseWord = this.words[i].wordString;
@@ -59,11 +56,12 @@ function Tweet(tweet) {
 			if (word === 'not' && i < this.words.length) {
 				var nextWord = this.words[i + 1].wordString.toLowerCase();
 				var compundExpression = word + ' ' + nextWord;
-				/*This code finds expressions like "not funny" and flips the value of the next word if it's not in AFINN-111.*/
+				/* If a compound expression exists in afinn-111 */
 				if (afinn.hasOwnProperty(compundExpression)) {
 					this.sentimentWords.push(originalCaseWord + ' ' + nextWord);
 					score += Number(afinn[compundExpression]);
 					i++;
+				/* If a sentiment word is preceded by a 'not' its value gets flipped. */
 				} else if (afinn.hasOwnProperty(nextWord)) {
 					this.sentimentWords.push(originalCaseWord + ' ' + nextWord);
 					score += (-1 * Number(afinn[nextWord]));
@@ -98,7 +96,6 @@ function Tweet(tweet) {
 	}
 
 	this.createWordObjects = function() {
-		/*console.log('-- createWordObjects');*/
 		for (var i = 0; i < this.rs.words().length; i++) {
 			this.words[i] = new Word(this.rs.words()[i], this.rs.pos()[i]);
 		}
@@ -106,7 +103,6 @@ function Tweet(tweet) {
 	
 	/*Created by the one and only Martin Sjåstad*/
 	this.findSentences = function(s) {
-		/*console.log('-- findSentences');*/
 		var regEX = /[^.!?]*[.!?]+/g;
 		var arr = s.match(regEX);
 		var trimmed = arr.map(function(item) {
@@ -116,7 +112,6 @@ function Tweet(tweet) {
 	}
 	
 	this.createSentences = function(arr) {
-		/*console.log('-- createSentences');*/
 		var regEX = new RegExp('[^.|,|?|!]');
 		for (var s in arr) {
 			if (arr.hasOwnProperty(s) && regEX.test(arr[s])) {
